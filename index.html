@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FERDEW Hub — Fashion Store | Ibadan</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--or:#f68b1e;--or2:#e5700a;--red:#e02020;--bl:#3b6ec5;--dk:#1a1a1a;--gy:#f4f4f4;--mid:#767676;--bd:#e0e0e0;--wh:#fff;--gn:#3b9c3b;}
+body{font-family:'Lato',sans-serif;background:#f0f0f0;color:var(--dk);font-size:14px;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--or);}
+
+/* AUTH */
+.ao{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;}
+.ab{background:#fff;width:100%;max-width:400px;border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.3);}
+.at{background:var(--or);padding:20px 24px;}
+.al{font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#fff;}
+.al span{background:#fff;color:var(--or);padding:0 5px;border-radius:2px;margin-left:2px;}
+.as{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px;}
+.ab2{padding:20px 24px 24px;}
+.tabs{display:flex;border-bottom:2px solid var(--bd);margin-bottom:18px;}
+.tab{flex:1;padding:9px;text-align:center;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;color:var(--mid);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.tab.active{color:var(--or);border-bottom-color:var(--or);}
+.af{margin-bottom:12px;}
+.af label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px;}
+.af input{font-family:'Lato',sans-serif;font-size:14px;border:1.5px solid var(--bd);padding:10px 12px;width:100%;outline:none;border-radius:3px;transition:border .2s;}
+.af input:focus{border-color:var(--or);}
+.bor{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;background:var(--or);color:#fff;border:none;padding:12px;width:100%;cursor:pointer;border-radius:3px;transition:background .2s;}
+.bor:hover{background:var(--or2);}
+.ae{font-size:12px;color:var(--red);margin-bottom:10px;display:none;padding:8px 10px;background:#fff5f5;border-left:3px solid var(--red);border-radius:2px;}
+.asw{text-align:center;margin-top:14px;font-size:12px;color:var(--mid);}
+.asw span{color:var(--or);cursor:pointer;font-weight:700;}
+
+/* TOP BAR */
+.tb{background:var(--or);padding:0 16px;position:sticky;top:0;z-index:998;}
+.tbi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px;}
+.logo{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:#fff;cursor:pointer;}
+.logo span{background:#fff;color:var(--or);padding:0 5px;border-radius:2px;margin-left:2px;}
+.sb{flex:1;max-width:520px;display:flex;}
+.sb input{flex:1;font-family:'Lato',sans-serif;font-size:13px;border:none;padding:10px 14px;outline:none;border-radius:3px 0 0 3px;}
+.sb button{background:rgba(255,255,255,.25);color:#fff;border:none;padding:0 16px;cursor:pointer;font-size:16px;border-radius:0 3px 3px 0;}
+.ta{display:flex;align-items:center;gap:8px;}
+.cbtn{background:rgba(255,255,255,.15);color:#fff;border:none;padding:7px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;border-radius:3px;display:flex;align-items:center;gap:6px;}
+.cc{background:#fff;color:var(--or);width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+
+/* NAV */
+.nb{background:var(--dk);padding:0 16px;}
+.nbi{max-width:1280px;margin:0 auto;display:flex;align-items:center;height:40px;}
+.nl{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);padding:0 14px;height:40px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.nl:hover,.nl.active{color:#fff;border-bottom-color:var(--or);}
+.nu{margin-left:auto;font-family:'Nunito',sans-serif;font-size:12px;color:rgba(255,255,255,.5);}
+.nu span{color:var(--or);}
+.lob{font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,.4);cursor:pointer;margin-left:14px;padding:4px 8px;border:1px solid rgba(255,255,255,.1);border-radius:2px;}
+.lob:hover{color:#fff;}
+
+/* BANNER */
+.bn{background:linear-gradient(120deg,#1a0500,#3d1500,#1a0a00);position:relative;overflow:hidden;}
+.bni{max-width:1280px;margin:0 auto;padding:clamp(28px,5vw,60px) 16px;display:flex;align-items:center;min-height:300px;}
+.bne{position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:clamp(80px,15vw,200px);opacity:.07;pointer-events:none;}
+.bnc{position:relative;z-index:1;max-width:560px;}
+.bntag{display:inline-block;background:var(--or);color:#fff;font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:5px 12px;border-radius:2px;margin-bottom:12px;}
+.bnh{font-family:'Nunito',sans-serif;font-size:clamp(22px,5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+.bnh em{color:var(--or);font-style:normal;}
+.bnp{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.7;}
+.bnbtns{display:flex;gap:10px;flex-wrap:wrap;}
+.bbs{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;background:var(--or);color:#fff;border:none;padding:11px 22px;cursor:pointer;border-radius:3px;}
+.bbg{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:11px 22px;cursor:pointer;border-radius:3px;}
+
+/* PROMO */
+.pr{background:#fff;border-bottom:1px solid var(--bd);padding:10px 16px;}
+.pri{max-width:1280px;margin:0 auto;display:flex;justify-content:center;gap:clamp(12px,3vw,48px);flex-wrap:wrap;}
+.pit{display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;}
+.pi{width:30px;height:30px;background:var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.pig{background:var(--gn);}
+
+/* FLASH */
+.fl{background:var(--red);padding:8px 16px;}
+.fli{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:12px;}
+.flt{font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;white-space:nowrap;}
+.ftm{display:flex;gap:4px;align-items:center;}
+.tb2{background:rgba(0,0,0,.3);color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;padding:3px 8px;border-radius:3px;min-width:32px;text-align:center;}
+.ts{color:rgba(255,255,255,.6);font-weight:700;}
+.fo{margin-left:auto;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,.8);}
+
+/* SECTION */
+.sc{padding:10px 16px;}
+.sci{max-width:1280px;margin:0 auto;}
+.sh{background:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--or);margin-bottom:1px;}
+.st{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;}
+.st span{color:var(--or);}
+.sab{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--or);background:none;border:1px solid var(--or);padding:5px 14px;cursor:pointer;border-radius:2px;}
+.sab:hover{background:var(--or);color:#fff;}
+
+/* CAT GRID */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:1px;background:var(--bd);}
+.ci{background:#fff;padding:14px 8px;text-align:center;cursor:pointer;transition:background .2s;}
+.ci:hover{background:#fff8f0;}
+.ce{font-size:32px;display:block;margin-bottom:6px;}
+.cn{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;}
+.ck{font-size:11px;color:var(--mid);margin-top:2px;}
+
+/* PRODUCTS */
+.pw{background:var(--bd);}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;}
+.pc{background:#fff;cursor:pointer;position:relative;transition:box-shadow .2s;}
+.pc:hover{box-shadow:0 4px 20px rgba(0,0,0,.12);z-index:1;}
+.pb{position:absolute;top:8px;left:8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:800;padding:3px 7px;z-index:2;border-radius:2px;}
+.br{background:var(--red);color:#fff;}
+.bog{background:var(--or);color:#fff;}
+.bgn{background:var(--gn);color:#fff;}
+.bbl{background:var(--bl);color:#fff;}
+.bns{position:absolute;top:8px;right:8px;background:var(--gn);color:#fff;font-family:'Nunito',sans-serif;font-size:10px;font-weight:800;padding:3px 7px;z-index:2;border-radius:2px;}
+.pim{height:170px;background:linear-gradient(135deg,#fff8f0,#ffeedd);display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;}
+.pw2{background:none;border:none;position:absolute;top:6px;right:6px;width:26px;height:26px;background:rgba(255,255,255,.9);border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+.pbd{padding:10px 12px 12px;}
+.pn{font-size:13px;color:var(--dk);line-height:1.4;margin-bottom:5px;height:36px;overflow:hidden;}
+.pp{font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;color:var(--red);}
+.po{font-size:12px;color:var(--mid);text-decoration:line-through;display:inline;}
+.pd{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;color:var(--or);margin-left:4px;}
+.prat{display:flex;align-items:center;gap:4px;margin:5px 0;}
+.str{color:#f68b1e;font-size:11px;}
+.rc{font-size:11px;color:var(--mid);}
+.pbon{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;padding:3px 7px;margin:4px 0 6px;display:inline-block;border-radius:2px;}
+.psz{display:flex;gap:4px;flex-wrap:wrap;margin:5px 0 8px;}
+.sz{font-size:10px;border:1px solid var(--bd);padding:2px 5px;cursor:pointer;border-radius:2px;font-family:'Nunito',sans-serif;font-weight:700;transition:all .15s;}
+.sz:hover,.sz.sel{border-color:var(--or);background:var(--or);color:#fff;}
+.ab3{width:100%;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;background:var(--or);color:#fff;border:none;padding:8px;cursor:pointer;border-radius:3px;text-transform:uppercase;letter-spacing:.05em;}
+.ab3:hover{background:var(--or2);}
+
+/* CART PANEL */
+.co{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9998;}
+.co.open{display:block;}
+.cd{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:400px;background:#fff;z-index:9999;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s;box-shadow:-4px 0 20px rgba(0,0,0,.15);}
+.co.open .cd{transform:translateX(0);}
+.ch{background:var(--or);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.cht{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.chc{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;}
+.cbody{flex:1;overflow-y:auto;padding:12px 16px;}
+.cit{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd);}
+.cii{width:60px;height:60px;background:linear-gradient(135deg,#fff8f0,#ffeedd);display:flex;align-items:center;justify-content:center;font-size:26px;border-radius:4px;flex-shrink:0;}
+.cin{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:2px;}
+.cis{font-size:11px;color:var(--mid);margin-bottom:4px;}
+.cip{font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;color:var(--red);}
+.qr{display:flex;align-items:center;gap:6px;margin-top:5px;}
+.qb{width:24px;height:24px;border:1.5px solid var(--bd);background:#fff;cursor:pointer;font-size:13px;border-radius:2px;font-weight:700;}
+.qb:hover{border-color:var(--or);color:var(--or);}
+.qv{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;width:22px;text-align:center;}
+.db{background:none;border:none;color:var(--mid);cursor:pointer;font-size:13px;margin-left:auto;}
+.db:hover{color:var(--red);}
+.cf{padding:14px 16px;border-top:1px solid var(--bd);background:#fafafa;}
+.ctt{display:flex;justify-content:space-between;margin-bottom:12px;}
+.ctl{font-size:13px;color:var(--mid);}
+.ctv{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--red);}
+.ect{text-align:center;padding:50px 20px;}
+
+/* ORDER */
+.oo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99990;overflow-y:auto;padding:16px;}
+.oo.open{display:flex;align-items:flex-start;justify-content:center;}
+.ob{background:#fff;width:100%;max-width:540px;margin:auto;border-radius:4px;overflow:hidden;}
+.oh{background:var(--or);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.oht{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.ohc{background:rgba(255,255,255,.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:15px;}
+.obdy{padding:18px;}
+.fi{margin-bottom:12px;}
+.fi label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px;}
+.fi input,.fi textarea,.fi select{font-family:'Lato',sans-serif;font-size:14px;border:1.5px solid var(--bd);padding:10px 12px;width:100%;outline:none;border-radius:3px;transition:border .2s;}
+.fi input:focus,.fi textarea:focus{border-color:var(--or);}
+.bi{background:#fff8f0;border:1px solid #ffddb5;border-left:4px solid var(--or);padding:14px;margin-bottom:14px;border-radius:0 3px 3px 0;}
+.bih{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:8px;}
+.brw{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid rgba(246,139,30,.1);}
+.brw:last-child{border:none;}
+.bk{color:var(--mid);}
+.bv{font-weight:700;}
+.oer{font-size:12px;color:var(--red);margin-bottom:10px;display:none;padding:8px 10px;background:#fff5f5;border-radius:3px;border-left:3px solid var(--red);}
+
+/* FOOTER */
+.ft{background:var(--dk);padding:32px 16px 20px;}
+.fti{max-width:1280px;margin:0 auto;}
+.ftg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px;}
+.flo{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
+.flo span{background:var(--or);padding:0 5px;border-radius:2px;margin-left:2px;}
+.fd{font-size:13px;color:rgba(255,255,255,.3);line-height:1.7;max-width:220px;}
+.fh{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px;}
+.fln{display:block;font-size:13px;color:rgba(255,255,255,.35);margin-bottom:8px;transition:color .2s;cursor:pointer;}
+.fln:hover{color:var(--or);}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.fc{font-size:12px;color:rgba(255,255,255,.2);}
+.pbg{display:flex;gap:8px;}
+.pb2{background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;padding:4px 10px;border-radius:3px;}
+
+/* TOAST */
+.tst{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dk);color:#fff;padding:10px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;z-index:999999;opacity:0;transition:all .3s;border-radius:3px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.tst.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:900px){.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.sb{display:none;}.pg{grid-template-columns:1fr 1fr;}.cg{grid-template-columns:repeat(4,1fr);}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:380px){.pg{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- AUTH OVERLAY -->
+<div class="ao" id="authOverlay">
+  <div class="ab">
+    <div class="at">
+      <div class="al">FERDEW<span>Hub</span></div>
+      <div class="as">Fashion Store · Agodi, Ibadan</div>
+    </div>
+    <div class="ab2">
+      <div class="tabs">
+        <div class="tab active" id="tabLogin" onclick="showLogin()">Login</div>
+        <div class="tab" id="tabSignup" onclick="showSignup()">Sign Up</div>
+      </div>
+      <div id="authForm"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="tb">
+  <div class="tbi">
+    <div class="logo" onclick="scrollTo(0,0)">FERDEW<span>Hub</span></div>
+    <div class="sb">
+      <input type="text" id="searchInput" placeholder="Search products, brands..." oninput="doSearch(this.value)"/>
+      <button>🔍</button>
+    </div>
+    <div class="ta">
+      <button class="cbtn" onclick="openCart()">🛒 Cart <span class="cc" id="cartCount">0</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="nb">
+  <div class="nbi">
+    <div class="nl active" onclick="filterCat('all',this)">All</div>
+    <div class="nl" onclick="filterCat('women',this)">Women</div>
+    <div class="nl" onclick="filterCat('men',this)">Men</div>
+    <div class="nl" onclick="filterCat('kids',this)">Kids</div>
+    <div class="nl" onclick="filterCat('accessories',this)">Accessories</div>
+    <div class="nl" onclick="filterCat('shoes',this)">Shoes</div>
+    <div class="nl" onclick="filterCat('bags',this)">Bags</div>
+    <div class="nu" id="navUser"></div>
+    <div class="lob" onclick="logout()">Logout</div>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="bn">
+  <div class="bni">
+    <div class="bne">👗</div>
+    <div class="bnc">
+      <div class="bntag">🔥 New Collection 2026</div>
+      <div class="bnh">Best Fashion <em>Deals</em> in Ibadan</div>
+      <div class="bnp">Shop the latest styles for men, women & kids at unbeatable prices. Fast delivery across Ibadan and Oyo State.</div>
+      <div class="bnbtns">
+        <button class="bbs" onclick="document.getElementById('prodSec').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+        <button class="bbg" onclick="document.getElementById('catSec').scrollIntoView({behavior:'smooth'})">Browse Categories</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO STRIP -->
+<div class="pr">
+  <div class="pri">
+    <div class="pit"><div class="pi">🚚</div>Free Delivery in Ibadan</div>
+    <div class="pit"><div class="pi">✅</div>Genuine Products</div>
+    <div class="pit"><div class="pi">↩️</div>Easy Returns</div>
+    <div class="pit"><div class="pi">🔒</div>Secure Payment</div>
+    <div class="pit"><div class="pi pig">🎁</div>20% Bonus on Selected Items</div>
+  </div>
+</div>
+
+<!-- FLASH SALE -->
+<div class="fl">
+  <div class="fli">
+    <div class="flt">⚡ FLASH SALE</div>
+    <div class="ftm" id="flashTimer"></div>
+    <div class="fo">Up to 40% OFF</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="sc" id="catSec">
+  <div class="sci">
+    <div class="sh"><div class="st">Shop by <span>Category</span></div></div>
+    <div class="cg">
+      <div class="ci" onclick="filterCat('women',null)"><span class="ce">👗</span><div class="cn">Women</div><div class="ck">12 items</div></div>
+      <div class="ci" onclick="filterCat('men',null)"><span class="ce">👔</span><div class="cn">Men</div><div class="ck">12 items</div></div>
+      <div class="ci" onclick="filterCat('kids',null)"><span class="ce">🧒</span><div class="cn">Kids</div><div class="ck">8 items</div></div>
+      <div class="ci" onclick="filterCat('accessories',null)"><span class="ce">🧣</span><div class="cn">Accessories</div><div class="ck">8 items</div></div>
+      <div class="ci" onclick="filterCat('shoes',null)"><span class="ce">👠</span><div class="cn">Shoes</div><div class="ck">8 items</div></div>
+      <div class="ci" onclick="filterCat('bags',null)"><span class="ce">👜</span><div class="cn">Bags</div><div class="ck">8 items</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="sc" id="prodSec">
+  <div class="sci">
+    <div class="sh">
+      <div class="st" id="prodTitle">Featured <span>Products</span></div>
+      <button class="sab" onclick="filterCat('all',null)">See All</button>
+    </div>
+    <div class="pw"><div class="pg" id="prodGrid"></div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="ft">
+  <div class="fti">
+    <div class="ftg">
+      <div>
+        <div class="flo">FERDEW<span>Hub</span></div>
+        <div class="fd">Your number one fashion store in Agodi, Ibadan. Quality clothing for men, women and kids.</div>
+        <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.2);line-height:2;">📍 Agodi, Ibadan, Oyo State<br>📞 08150898386<br>✉️ oladejiridwanopeyemi@gmail.com</div>
+      </div>
+      <div>
+        <div class="fh">Categories</div>
+        <span class="fln" onclick="filterCat('women',null)">Women's Fashion</span>
+        <span class="fln" onclick="filterCat('men',null)">Men's Fashion</span>
+        <span class="fln" onclick="filterCat('kids',null)">Kids' Wear</span>
+        <span class="fln" onclick="filterCat('accessories',null)">Accessories</span>
+        <span class="fln" onclick="filterCat('shoes',null)">Shoes</span>
+        <span class="fln" onclick="filterCat('bags',null)">Bags</span>
+      </div>
+      <div>
+        <div class="fh">Customer Care</div>
+        <span class="fln">Help Center</span>
+        <span class="fln">Track My Order</span>
+        <span class="fln">Returns & Refund</span>
+        <span class="fln">Contact Us</span>
+      </div>
+      <div>
+        <div class="fh">Payment Info</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.3);line-height:2.2;">Bank: <b style="color:rgba(255,255,255,.5)">Stanbic IBTC</b><br>Acc: <b style="color:rgba(255,255,255,.5)">0007761996</b><br>Name: <b style="color:rgba(255,255,255,.5)">Oladeji Opeyemi</b></div>
+        <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.2);">📞 08150898386</div>
+      </div>
+    </div>
+    <div class="fbot">
+      <div class="fc">© 2026 FERDEW Hub, Agodi, Ibadan. All rights reserved.</div>
+      <div class="pbg"><div class="pb2">Bank Transfer</div><div class="pb2">Cash on Delivery</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="co" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+  <div class="cd">
+    <div class="ch"><div class="cht">🛒 Shopping Cart</div><button class="chc" onclick="closeCart()">✕</button></div>
+    <div class="cbody" id="cartBody"></div>
+    <div class="cf" id="cartFoot"></div>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="oo" id="orderOverlay">
+  <div class="ob">
+    <div class="oh"><div class="oht">Complete Your Order</div><button class="ohc" onclick="closeOrder()">✕</button></div>
+    <div class="obdy" id="orderBody"></div>
+  </div>
+</div>
+
+<div class="tst" id="toast"></div>
+
+<script>
+// ===== PRODUCTS DATA =====
+var PRODUCTS=[
+  {id:1,cat:'women',name:'Ankara Wrap Dress',brand:'FERDEW',price:12500,old:18000,emoji:'👗',sizes:['S','M','L','XL'],badge:'Hot',bc:'br',rating:4.5,reviews:128,bonus:true},
+  {id:2,cat:'women',name:'Lace Blouse Top',brand:'Elegance',price:6500,old:9000,emoji:'👚',sizes:['S','M','L'],badge:'New',bc:'bgn',rating:4.2,reviews:64,bonus:false},
+  {id:3,cat:'women',name:'High-Waist Palazzo Pants',brand:'StyleMax',price:8800,old:12000,emoji:'👖',sizes:['S','M','L','XL','XXL'],badge:null,bc:'',rating:4.0,reviews:47,bonus:false},
+  {id:4,cat:'women',name:'Floral Maxi Skirt',brand:'FERDEW',price:7500,old:10500,emoji:'🌸',sizes:['S','M','L'],badge:'Sale',bc:'bog',rating:4.3,reviews:89,bonus:true},
+  {id:5,cat:'women',name:'Bodycon Midi Dress',brand:'CurveFit',price:9500,old:14000,emoji:'👗',sizes:['S','M','L','XL'],badge:'Trending',bc:'br',rating:4.6,reviews:201,bonus:false},
+  {id:6,cat:'women',name:'Chiffon Peplum Top',brand:'Elegance',price:5500,old:8000,emoji:'👕',sizes:['S','M','L'],badge:null,bc:'',rating:4.1,reviews:55,bonus:false},
+  {id:7,cat:'women',name:'Aso-Oke Blouse & Wrapper',brand:'FERDEW',price:18000,old:25000,emoji:'🥻',sizes:['S','M','L','XL'],badge:'Premium',bc:'bbl',rating:4.8,reviews:176,bonus:true},
+  {id:8,cat:'women',name:'Denim Jumpsuit',brand:'UrbanLady',price:14500,old:20000,emoji:'👗',sizes:['XS','S','M','L','XL'],badge:'New',bc:'bgn',rating:4.4,reviews:98,bonus:false},
+  {id:9,cat:'women',name:'Off-Shoulder Party Dress',brand:'GlamUp',price:11000,old:16000,emoji:'👗',sizes:['S','M','L'],badge:'Hot',bc:'br',rating:4.7,reviews:143,bonus:false},
+  {id:10,cat:'women',name:'Casual Joggers Set',brand:'SportyLady',price:7000,old:10000,emoji:'🩱',sizes:['S','M','L','XL','XXL'],badge:null,bc:'',rating:4.0,reviews:62,bonus:true},
+  {id:11,cat:'women',name:'Striped Button-Down Shirt',brand:'ClassicWear',price:6000,old:8500,emoji:'👚',sizes:['S','M','L'],badge:'Sale',bc:'bog',rating:4.2,reviews:77,bonus:false},
+  {id:12,cat:'women',name:'Linen Wide-Leg Trousers',brand:'StyleMax',price:9000,old:13000,emoji:'👖',sizes:['S','M','L','XL'],badge:null,bc:'',rating:4.3,reviews:84,bonus:false},
+  {id:13,cat:'men',name:'Senator Kaftan Set',brand:'KingStyle',price:15000,old:20000,emoji:'🧕',sizes:['M','L','XL','XXL'],badge:'Hot',bc:'br',rating:4.7,reviews:203,bonus:true},
+  {id:14,cat:'men',name:'Casual Oxford Shirt',brand:'MenFirst',price:9500,old:13000,emoji:'👔',sizes:['S','M','L','XL'],badge:null,bc:'',rating:4.1,reviews:76,bonus:false},
+  {id:15,cat:'men',name:'Slim Fit Chinos',brand:'FERDEW',price:11000,old:15000,emoji:'👖',sizes:['28','30','32','34','36'],badge:'New',bc:'bgn',rating:4.4,reviews:112,bonus:false},
+  {id:16,cat:'men',name:'Agbada Embroidered Set',brand:'RoyalWear',price:25000,old:35000,emoji:'🎭',sizes:['M','L','XL','XXL'],badge:'Premium',bc:'bbl',rating:4.8,reviews:156,bonus:true},
+  {id:17,cat:'men',name:'Native Embroidered Shirt',brand:'KingStyle',price:8500,old:12000,emoji:'👕',sizes:['S','M','L','XL','XXL'],badge:null,bc:'',rating:4.3,reviews:118,bonus:false},
+  {id:18,cat:'men',name:'Classic Plain T-Shirt 3-Pack',brand:'BasicMan',price:5500,old:8000,emoji:'👕',sizes:['S','M','L','XL'],badge:'Sale',bc:'bog',rating:4.5,reviews:234,bonus:true},
+  {id:19,cat:'men',name:'Formal Suit Jacket',brand:'GentleMan',price:32000,old:45000,emoji:'🤵',sizes:['M','L','XL','XXL'],badge:'Premium',bc:'bbl',rating:4.9,reviews:87,bonus:false},
+  {id:20,cat:'men',name:'Shorts & Polo Set',brand:'FERDEW',price:7500,old:11000,emoji:'🩳',sizes:['S','M','L','XL'],badge:'New',bc:'bgn',rating:4.2,reviews:93,bonus:false},
+  {id:21,cat:'men',name:'Denim Jeans Straight Fit',brand:'DenimKing',price:13000,old:18000,emoji:'👖',sizes:['28','30','32','34','36','38'],badge:null,bc:'',rating:4.4,reviews:165,bonus:true},
+  {id:22,cat:'men',name:'Ankara Print Shirt',brand:'AfriStyle',price:7000,old:10000,emoji:'👔',sizes:['S','M','L','XL'],badge:'Hot',bc:'br',rating:4.6,reviews:142,bonus:false},
+  {id:23,cat:'men',name:'Tracksuit Set',brand:'SportKing',price:14000,old:20000,emoji:'🏃',sizes:['S','M','L','XL','XXL'],badge:null,bc:'',rating:4.1,reviews:71,bonus:false},
+  {id:24,cat:'men',name:'Linen Jogger Trousers',brand:'RelaxMan',price:8000,old:11500,emoji:'👖',sizes:['28','30','32','34','36'],badge:'Sale',bc:'bog',rating:4.3,reviews:99,bonus:false},
+  {id:25,cat:'kids',name:'Kids Ankara Outfit',brand:'TinyStyle',price:4500,old:6500,emoji:'👶',sizes:['2-3yr','4-5yr','6-7yr','8-9yr'],badge:'Cute',bc:'bog',rating:4.6,reviews:92,bonus:true},
+  {id:26,cat:'kids',name:'Boys School Uniform Set',brand:'SchoolReady',price:5500,old:7500,emoji:'🎒',sizes:['4-5yr','6-7yr','8-9yr','10-11yr'],badge:null,bc:'',rating:4.3,reviews:58,bonus:false},
+  {id:27,cat:'kids',name:'Girls Party Dress',brand:'PrincessWear',price:6000,old:8500,emoji:'👗',sizes:['2-3yr','4-5yr','6-7yr','8-9yr'],badge:'New',bc:'bgn',rating:4.7,reviews:113,bonus:false},
+  {id:28,cat:'kids',name:'Boys Casual Shorts & Top',brand:'TinyStyle',price:3500,old:5000,emoji:'🩳',sizes:['2-3yr','4-5yr','6-7yr','8-9yr'],badge:null,bc:'',rating:4.2,reviews:67,bonus:true},
+  {id:29,cat:'kids',name:'Kids Tracksuit',brand:'LittleChamp',price:5000,old:7000,emoji:'🏃',sizes:['4-5yr','6-7yr','8-9yr','10-11yr'],badge:'Sale',bc:'bog',rating:4.4,reviews:84,bonus:false},
+  {id:30,cat:'kids',name:'Girls Ankara Gown',brand:'FERDEW',price:4000,old:6000,emoji:'👗',sizes:['2-3yr','4-5yr','6-7yr','8-9yr'],badge:'Hot',bc:'br',rating:4.8,reviews:127,bonus:false},
+  {id:31,cat:'kids',name:'Boys Native Senator Set',brand:'KingKids',price:6500,old:9000,emoji:'🧕',sizes:['4-5yr','6-7yr','8-9yr','10-11yr'],badge:'Premium',bc:'bbl',rating:4.5,reviews:76,bonus:true},
+  {id:32,cat:'kids',name:'Baby Romper 3-Pack',brand:'BabyFirst',price:4200,old:6000,emoji:'👶',sizes:['0-6m','6-12m','12-18m','18-24m'],badge:'New',bc:'bgn',rating:4.6,reviews:145,bonus:false},
+  {id:33,cat:'accessories',name:'Leather Handbag',brand:'LuxBags',price:13500,old:18000,emoji:'👜',sizes:['One Size'],badge:'Luxury',bc:'bbl',rating:4.7,reviews:134,bonus:true},
+  {id:34,cat:'accessories',name:'Ankara Head Wrap',brand:'FERDEW',price:2500,old:4000,emoji:'🧣',sizes:['One Size'],badge:null,bc:'',rating:4.2,reviews:43,bonus:false},
+  {id:35,cat:'accessories',name:"Men's Leather Belt",brand:'BeltKing',price:4500,old:7000,emoji:'🪡',sizes:['S','M','L','XL'],badge:null,bc:'',rating:4.4,reviews:88,bonus:false},
+  {id:36,cat:'accessories',name:'Ladies Wristwatch',brand:'TimeLux',price:18000,old:25000,emoji:'⌚',sizes:['One Size'],badge:'Luxury',bc:'bbl',rating:4.8,reviews:156,bonus:true},
+  {id:37,cat:'accessories',name:'Sunglasses',brand:'CoolShades',price:6500,old:9500,emoji:'🕶️',sizes:['One Size'],badge:'Trending',bc:'br',rating:4.5,reviews:201,bonus:false},
+  {id:38,cat:'accessories',name:'Silk Scarf',brand:'Elegance',price:3500,old:5500,emoji:'🧣',sizes:['One Size'],badge:'New',bc:'bgn',rating:4.3,reviews:67,bonus:false},
+  {id:39,cat:'accessories',name:'Ankara Bow Tie',brand:'AfriStyle',price:2000,old:3500,emoji:'🎀',sizes:['One Size'],badge:null,bc:'',rating:4.1,reviews:32,bonus:true},
+  {id:40,cat:'accessories',name:'Hair Accessories Set',brand:'BeautyPlus',price:2800,old:4500,emoji:'💍',sizes:['One Size'],badge:'Sale',bc:'bog',rating:4.2,reviews:119,bonus:false},
+  {id:41,cat:'shoes',name:'Ladies Block Heels',brand:'HeelQueen',price:14000,old:20000,emoji:'👠',sizes:['36','37','38','39','40'],badge:'Trending',bc:'br',rating:4.5,reviews:167,bonus:true},
+  {id:42,cat:'shoes',name:"Men's Classic Loafers",brand:'StepUp',price:16500,old:22000,emoji:'👞',sizes:['40','41','42','43','44','45'],badge:null,bc:'',rating:4.3,reviews:88,bonus:false},
+  {id:43,cat:'shoes',name:'Ladies Flat Sandals',brand:'ComfortStep',price:8500,old:12000,emoji:'🩴',sizes:['36','37','38','39','40','41'],badge:'New',bc:'bgn',rating:4.4,reviews:143,bonus:false},
+  {id:44,cat:'shoes',name:"Men's Sneakers",brand:'KickFresh',price:19500,old:28000,emoji:'👟',sizes:['40','41','42','43','44','45'],badge:'Hot',bc:'br',rating:4.7,reviews:289,bonus:true},
+  {id:45,cat:'shoes',name:'Ladies Court Shoes',brand:'HeelQueen',price:11000,old:16000,emoji:'👡',sizes:['36','37','38','39','40'],badge:null,bc:'',rating:4.2,reviews:76,bonus:false},
+  {id:46,cat:'shoes',name:"Men's Ankle Boots",brand:'BootKing',price:22000,old:32000,emoji:'🥾',sizes:['40','41','42','43','44','45'],badge:'Premium',bc:'bbl',rating:4.6,reviews:112,bonus:false},
+  {id:47,cat:'shoes',name:'Kids School Shoes',brand:'SchoolReady',price:7500,old:11000,emoji:'👟',sizes:['28','30','32','34','36'],badge:null,bc:'',rating:4.3,reviews:94,bonus:true},
+  {id:48,cat:'shoes',name:'Ladies Wedge Sandals',brand:'WalkGlam',price:12000,old:17000,emoji:'👡',sizes:['36','37','38','39','40','41'],badge:'Sale',bc:'bog',rating:4.5,reviews:188,bonus:false},
+  {id:49,cat:'bags',name:'School Backpack',brand:'CarryOn',price:8000,old:11000,emoji:'🎒',sizes:['One Size'],badge:null,bc:'',rating:4.1,reviews:72,bonus:false},
+  {id:50,cat:'bags',name:"Men's Laptop Bag",brand:'ProBag',price:12000,old:17000,emoji:'💼',sizes:['One Size'],badge:'New',bc:'bgn',rating:4.4,reviews:95,bonus:true},
+  {id:51,cat:'bags',name:'Ladies Tote Bag',brand:'LuxBags',price:15000,old:22000,emoji:'👜',sizes:['One Size'],badge:'Luxury',bc:'bbl',rating:4.7,reviews:167,bonus:false},
+  {id:52,cat:'bags',name:'Mini Crossbody Bag',brand:'ChicBag',price:9500,old:14000,emoji:'👛',sizes:['One Size'],badge:'Trending',bc:'br',rating:4.5,reviews:134,bonus:false},
+  {id:53,cat:'bags',name:"Men's Travel Duffel Bag",brand:'TravelPro',price:18000,old:25000,emoji:'🧳',sizes:['One Size'],badge:null,bc:'',rating:4.3,reviews:89,bonus:true},
+  {id:54,cat:'bags',name:'Kids School Bag',brand:'CarryOn',price:6500,old:9500,emoji:'🎒',sizes:['One Size'],badge:'New',bc:'bgn',rating:4.4,reviews:156,bonus:false},
+  {id:55,cat:'bags',name:'Clutch Evening Bag',brand:'GlamUp',price:7000,old:10500,emoji:'👛',sizes:['One Size'],badge:'Hot',bc:'br',rating:4.6,reviews:112,bonus:false},
+  {id:56,cat:'bags',name:"Men's Waist Pouch",brand:'UrbanMan',price:5500,old:8000,emoji:'🎒',sizes:['One Size'],badge:'Sale',bc:'bog',rating:4.2,reviews:78,bonus:true},
+];
+
+// ===== STATE =====
+var cart=[], selSizes={}, curFilter='all', searchQ='', curUser=null;
+
+// ===== AUTH FUNCTIONS =====
+var _users=[];
+var _session=null;
+function getUsers(){return _users;}
+function saveUsers(u){_users=u;}
+function getSession(){return _session;}
+function saveSession(e){_session=e;}
+function clearSession(){_session=null;}
+
+function showLogin(){
+  document.getElementById('tabLogin').className='tab active';
+  document.getElementById('tabSignup').className='tab';
+  document.getElementById('authForm').innerHTML=
+    '<div class="af"><label>Email</label><input id="ae" type="email" placeholder="your@email.com"/></div>'+
+    '<div class="af"><label>Password</label><input id="ap" type="password" placeholder="Password"/></div>'+
+    '<div class="ae" id="authErr"></div>'+
+    '<button class="bor" onclick="doLogin()">LOGIN</button>'+
+    '<div class="asw">No account? <span onclick="showSignup()">Sign Up</span></div>';
+}
+
+function showSignup(){
+  document.getElementById('tabLogin').className='tab';
+  document.getElementById('tabSignup').className='tab active';
+  document.getElementById('authForm').innerHTML=
+    '<div class="af"><label>Full Name</label><input id="an" placeholder="Your full name"/></div>'+
+    '<div class="af"><label>Email</label><input id="ae" type="email" placeholder="your@email.com"/></div>'+
+    '<div class="af"><label>Phone</label><input id="aph" placeholder="08012345678"/></div>'+
+    '<div class="af"><label>Password</label><input id="ap" type="password" placeholder="Min 6 characters"/></div>'+
+    '<div class="ae" id="authErr"></div>'+
+    '<button class="bor" onclick="doSignup()">CREATE ACCOUNT</button>'+
+    '<div class="asw">Have account? <span onclick="showLogin()">Login</span></div>';
+}
+
+function authErr(msg){var e=document.getElementById('authErr');e.style.display='block';e.textContent=msg;}
+
+function doLogin(){
+  var e=document.getElementById('ae').value.trim();
+  var p=document.getElementById('ap').value;
+  if(!e||!p){authErr('Please fill in all fields.');return;}
+  var user=getUsers().find(function(u){return u.email===e&&u.password===p;});
+  if(!user){authErr('Incorrect email or password.');return;}
+  loginOK(user);
+}
+
+function doSignup(){
+  var n=document.getElementById('an').value.trim();
+  var e=document.getElementById('ae').value.trim();
+  var ph=document.getElementById('aph').value.trim();
+  var p=document.getElementById('ap').value;
+  if(!n||!e||!ph||!p){authErr('Please fill in all fields.');return;}
+  if(p.length<6){authErr('Password must be at least 6 characters.');return;}
+  var users=getUsers();
+  if(users.find(function(u){return u.email===e;})){authErr('Email already registered.');return;}
+  var nu={name:n,email:e,phone:ph,password:p};
+  users.push(nu);saveUsers(users);
+  loginOK(nu);
+  showToast('Welcome to FERDEW Hub, '+n.split(' ')[0]+'! 🎉');
+}
+
+function loginOK(user){
+  curUser=user;saveSession(user.email);
+  document.getElementById('authOverlay').style.display='none';
+  document.getElementById('navUser').innerHTML='Hi, <span>'+user.name.split(' ')[0]+'</span>';
+}
+
+function logout(){
+  clearSession();curUser=null;cart=[];updateCartUI();
+  document.getElementById('authOverlay').style.display='flex';
+  document.getElementById('navUser').innerHTML='';
+  showLogin();
+}
+
+function checkSession(){
+  showLogin();
+}
+
+// ===== PRODUCTS =====
+function stars(r){
+  var s='';
+  for(var i=1;i<=5;i++){s+=i<=r?'★':'☆';}
+  return s;
+}
+
+function renderProducts(){
+  var grid=document.getElementById('prodGrid');
+  var data=PRODUCTS.slice();
+  if(curFilter!=='all')data=data.filter(function(p){return p.cat===curFilter;});
+  if(searchQ)data=data.filter(function(p){return p.name.toLowerCase().indexOf(searchQ)>=0||p.brand.toLowerCase().indexOf(searchQ)>=0;});
+  if(!data.length){grid.innerHTML='<div style="background:#fff;padding:60px;text-align:center;width:100%;"><div style="font-size:48px;margin-bottom:14px;">🔍</div><div style="font-family:Nunito,sans-serif;font-size:15px;color:#888;">No products found</div></div>';return;}
+  var html='';
+  for(var i=0;i<data.length;i++){
+    var p=data[i];
+    var disc=Math.round((1-p.price/p.old)*100);
+    html+='<div class="pc">';
+    if(p.bonus)html+='<div class="bns">+20% BONUS</div>';
+    if(p.badge)html+='<div class="pb '+p.bc+'">'+p.badge+'</div>';
+    html+='<div class="pim"><button class="pw2">🤍</button>'+p.emoji+'</div>';
+    html+='<div class="pbd">';
+    html+='<div class="pn">'+p.name+'</div>';
+    html+='<div class="pp">₦'+p.price.toLocaleString()+'</div>';
+    html+='<div><span class="po">₦'+p.old.toLocaleString()+'</span><span class="pd">-'+disc+'%</span></div>';
+    if(p.bonus)html+='<div class="pbon">🎁 +20% BONUS</div>';
+    html+='<div class="prat"><span class="str">'+stars(Math.floor(p.rating))+'</span><span class="rc">('+p.reviews+')</span></div>';
+    html+='<div class="psz">';
+    for(var j=0;j<p.sizes.length;j++){
+      html+='<div class="sz" onclick="pickSize('+p.id+',\''+p.sizes[j]+'\',this)">'+p.sizes[j]+'</div>';
+    }
+    html+='</div>';
+    html+='<button class="ab3" onclick="addToCart('+p.id+')">ADD TO CART</button>';
+    html+='</div></div>';
+  }
+  grid.innerHTML=html;
+}
+
+function pickSize(id,s,el){
+  selSizes[id]=s;
+  var btns=el.parentNode.querySelectorAll('.sz');
+  for(var i=0;i<btns.length;i++)btns[i].classList.remove('sel');
+  el.classList.add('sel');
+}
+
+function addToCart(id){
+  var p=PRODUCTS.find(function(p){return p.id===id;});
+  var size=selSizes[id]||p.sizes[0];
+  var key=id+'_'+size;
+  var ex=cart.find(function(c){return c.key===key;});
+  if(ex)ex.qty++;
+  else cart.push({id:p.id,name:p.name,price:p.price,emoji:p.emoji,size:size,key:key,qty:1});
+  updateCartUI();
+  showToast(p.name+' added to cart! 🛍️');
+}
+
+function updateCartUI(){
+  var total=0;
+  for(var i=0;i<cart.length;i++)total+=cart[i].qty;
+  document.getElementById('cartCount').textContent=total;
+}
+
+function filterCat(cat,btn){
+  curFilter=cat;
+  var links=document.querySelectorAll('.nl');
+  for(var i=0;i<links.length;i++)links[i].classList.remove('active');
+  if(btn)btn.classList.add('active');
+  var titles={all:'Featured <span>Products</span>',women:"Women's <span>Fashion</span>",men:"Men's <span>Fashion</span>",kids:"Kids' <span>Wear</span>",accessories:'<span>Accessories</span>',shoes:'<span>Shoes</span>',bags:'<span>Bags</span>'};
+  document.getElementById('prodTitle').innerHTML=titles[cat]||titles.all;
+  renderProducts();
+  document.getElementById('prodSec').scrollIntoView({behavior:'smooth'});
+}
+
+function doSearch(val){searchQ=val.toLowerCase().trim();renderProducts();}
+
+// ===== CART =====
+function openCart(){renderCart();document.getElementById('cartOverlay').classList.add('open');}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
+
+function renderCart(){
+  var body=document.getElementById('cartBody');
+  var foot=document.getElementById('cartFoot');
+  if(!cart.length){
+    body.innerHTML='<div class="ect"><div style="font-size:52px;margin-bottom:12px;">🛒</div><div style="font-family:Nunito,sans-serif;font-size:14px;color:#888;">Your cart is empty</div></div>';
+    foot.innerHTML='';return;
+  }
+  var total=0;for(var i=0;i<cart.length;i++)total+=cart[i].price*cart[i].qty;
+  var html='';
+  for(var i=0;i<cart.length;i++){
+    var c=cart[i];
+    html+='<div class="cit">';
+    html+='<div class="cii">'+c.emoji+'</div>';
+    html+='<div style="flex:1"><div class="cin">'+c.name+'</div>';
+    html+='<div class="cis">Size: '+c.size+'</div>';
+    html+='<div class="cip">₦'+(c.price*c.qty).toLocaleString()+'</div>';
+    html+='<div class="qr"><button class="qb" onclick="chQty(\''+c.key+'\',-1)">−</button>';
+    html+='<span class="qv">'+c.qty+'</span>';
+    html+='<button class="qb" onclick="chQty(\''+c.key+'\',1)">+</button>';
+    html+='<button class="db" onclick="chQty(\''+c.key+'\',-99)">🗑️</button></div></div></div>';
+  }
+  body.innerHTML=html;
+  foot.innerHTML='<div class="ctt"><span class="ctl">Subtotal</span><span class="ctv">₦'+total.toLocaleString()+'</span></div><button class="bor" onclick="closeCart();openOrder()">CHECKOUT →</button>';
+}
+
+function chQty(key,delta){
+  var item=cart.find(function(c){return c.key===key;});
+  if(item){item.qty+=delta;if(item.qty<=0)cart=cart.filter(function(c){return c.key!==key;});}
+  updateCartUI();renderCart();
+}
+
+// ===== ORDER =====
+function openOrder(){document.getElementById('orderOverlay').classList.add('open');renderOrder();}
+function closeOrder(){document.getElementById('orderOverlay').classList.remove('open');}
+
+function renderOrder(){
+  var total=0;for(var i=0;i<cart.length;i++)total+=cart[i].price*cart[i].qty;
+  var sumHtml='';
+  for(var i=0;i<cart.length;i++){
+    var c=cart[i];
+    sumHtml+='<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;gap:8px;"><span>'+c.name+' ('+c.size+') x'+c.qty+'</span><span style="font-weight:700;white-space:nowrap;">₦'+(c.price*c.qty).toLocaleString()+'</span></div>';
+  }
+  var name=curUser?curUser.name:'';
+  var phone=curUser?curUser.phone:'';
+  document.getElementById('orderBody').innerHTML=
+    '<div style="background:#fafafa;border:1px solid #eee;padding:14px;margin-bottom:14px;border-radius:3px;">'+
+    '<div style="font-family:Nunito,sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:8px;">Order Summary</div>'+
+    sumHtml+
+    '<div style="border-top:1px solid #eee;margin-top:8px;padding-top:8px;display:flex;justify-content:space-between;font-family:Nunito,sans-serif;font-size:17px;font-weight:900;"><span>Total</span><span style="color:var(--red);">₦'+total.toLocaleString()+'</span></div></div>'+
+    '<div class="fi"><label>Full Name *</label><input id="on" value="'+name+'" placeholder="Your full name"/></div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'+
+    '<div class="fi"><label>Phone *</label><input id="oph" value="'+phone+'" placeholder="08012345678"/></div>'+
+    '<div class="fi"><label>Email</label><input id="oem" value="'+(curUser?curUser.email:'')+'" placeholder="your@email.com"/></div></div>'+
+    '<div class="fi"><label>Delivery Address *</label><textarea id="oad" rows="2" placeholder="Full delivery address in Ibadan..."></textarea></div>'+
+    '<div class="bi"><div class="bih">💳 Pay To:</div>'+
+    '<div class="brw"><span class="bk">Bank</span><span class="bv">Stanbic IBTC Bank</span></div>'+
+    '<div class="brw"><span class="bk">Account No.</span><span class="bv">0007761996</span></div>'+
+    '<div class="brw"><span class="bk">Account Name</span><span class="bv">Oladeji Opeyemi</span></div>'+
+    '<div class="brw"><span class="bk">Amount</span><span class="bv" style="color:var(--red);">₦'+total.toLocaleString()+'</span></div></div>'+
+    '<div class="fi"><label>Transfer Reference *</label><input id="oref" placeholder="Enter your bank transfer reference..."/></div>'+
+    '<div class="oer" id="orderErr"></div>'+
+    '<button class="bor" onclick="submitOrder()">CONFIRM ORDER →</button>';
+}
+
+function submitOrder(){
+  var n=document.getElementById('on').value.trim();
+  var ph=document.getElementById('oph').value.trim();
+  var ad=document.getElementById('oad').value.trim();
+  var ref=document.getElementById('oref').value.trim();
+  var err=document.getElementById('orderErr');
+  if(!n||!ph||!ad||!ref){err.style.display='block';err.textContent='Please fill in all required fields.';return;}
+  var orderId='FH-'+Date.now().toString().slice(-6);
+  document.getElementById('orderBody').innerHTML=
+    '<div style="text-align:center;padding:32px 0 20px;">'+
+    '<div style="font-size:60px;margin-bottom:14px;">🎉</div>'+
+    '<div style="font-family:Nunito,sans-serif;font-size:22px;font-weight:900;color:var(--gn);margin-bottom:8px;">Order Placed!</div>'+
+    '<p style="font-size:14px;color:#666;margin-bottom:20px;line-height:1.7;">Thank you <b>'+n+'</b>! We will call <b>'+ph+'</b> to confirm and arrange delivery.</p>'+
+    '<div style="background:#fafafa;border:1px solid #eee;border-top:3px solid var(--or);padding:16px;margin-bottom:14px;">'+
+    '<div style="font-family:Nunito,sans-serif;font-size:11px;text-transform:uppercase;color:var(--or);margin-bottom:5px;">Order ID</div>'+
+    '<div style="font-family:Nunito,sans-serif;font-size:26px;font-weight:900;">'+orderId+'</div></div>'+
+    '<div style="font-size:13px;color:#888;margin-bottom:18px;">Questions? Call: <b>08150898386</b></div>'+
+    '<button class="bor" onclick="closeOrder()">CONTINUE SHOPPING</button></div>';
+  cart=[];updateCartUI();
+}
+
+// ===== FLASH TIMER =====
+function startTimer(){
+  var end=new Date();end.setHours(23,59,59,0);
+  function update(){
+    var now=new Date();var diff=Math.floor((end-now)/1000);
+    if(diff<0)diff=0;
+    var h=Math.floor(diff/3600);var m=Math.floor((diff%3600)/60);var s=diff%60;
+    function pad(n){return n<10?'0'+n:n;}
+    document.getElementById('flashTimer').innerHTML=
+      '<span class="tb2">'+pad(h)+'</span><span class="ts">:</span>'+
+      '<span class="tb2">'+pad(m)+'</span><span class="ts">:</span>'+
+      '<span class="tb2">'+pad(s)+'</span>';
+    setTimeout(update,1000);
+  }update();
+}
+
+// ===== TOAST =====
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2500);
+}
+
+// ===== INIT =====
+checkSession();
+renderProducts();
+startTimer();
+</script>
+</body>
+</html>
